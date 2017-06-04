@@ -1,0 +1,28 @@
+
+#ifndef NETLIST_InstM_H
+#define NETLIST_InstM_H
+
+#include <QAbstractTableModel>
+
+namespace Netlist {
+	class Cell;
+	//class Instance;
+class  InstancesModel : public  QAbstractTableModel {
+Q_OBJECT;
+public:
+	InstancesModel ( QObject* parent=NULL );
+	~InstancesModel  ();
+	void         setCell( Cell* );
+	Cell*       getModel( int  row );
+	int          rowCount( const  QModelIndex& parent=QModelIndex () ) const;
+	int          columnCount( const  QModelIndex& parent=QModelIndex () ) const;
+	QVariant    data(const  QModelIndex& index , int  role=Qt:: DisplayRole ) const;
+	QVariant    headerData( int  section, Qt:: Orientation  orientation, int  role=Qt:: DisplayRole ) const;
+private:
+	Cell* cell_;
+};
+
+
+}//end namespace
+
+#endif 
